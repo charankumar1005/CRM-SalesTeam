@@ -7,6 +7,8 @@ import leadRoutes from "./routes/leadRoutes.js";
 import opportunityRoutes from "./routes/opportunityRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 import { requireAuth } from "./middleware/authMiddleware.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
+
 
 
 dotenv.config();
@@ -19,7 +21,7 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use("/api/auth", authRoutes);
 app.use("/api/leads", leadRoutes);
-
+app.use("/api/dashboard", dashboardRoutes);
 
 
 app.get("/api/protected", requireAuth, (req, res) => {
